@@ -1,5 +1,9 @@
 # Rails Event Store - Dummy App
 
+This repo was created to help reproduce [issue #1650](https://github.com/RailsEventStore/rails_event_store/issues/1650)
+
+## Steps to reproduce
+
 ### Build the image
 
 ```bash
