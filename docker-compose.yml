@@ -1,0 +1,27 @@
+version: '3.6'
+
+services:
+  api:
+    image: res-dummy
+    env_file: .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:z
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    extra_hosts:
+      - 'res.local: 127.0.0.1'
+  db:
+    image: kartoza/postgis:15-3.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

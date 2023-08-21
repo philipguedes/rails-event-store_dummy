@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+main_database_default: &main_database_default
+  <<: *default
+  host: <%= ENV.fetch('DATABASE_HOST') %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+test:
+  primary:
+    <<: *main_database_default
+    database: res-dummy_test
+
+development:
+  primary:
+    <<: *main_database_default
+    database: res-dummy_development
